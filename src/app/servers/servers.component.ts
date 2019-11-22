@@ -11,6 +11,8 @@ export class ServersComponent implements OnInit {
 
   createServerStaus = 'Server is not created';
 
+  newServerName: string = null;
+
   constructor() { }
 
   ngOnInit() {
@@ -21,6 +23,10 @@ export class ServersComponent implements OnInit {
 
   onCreateServer() {
     this.createServerStaus = 'Server is created';
+  }
+
+  onUpdateServerName(event: Event) {
+    this.newServerName = (<HTMLInputElement>event.target).value;
   }
 
 }
