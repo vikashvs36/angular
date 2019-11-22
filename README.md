@@ -45,3 +45,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     > ng generate component component_name
     > ng generate component /folder/component_name      // Create under folder
     > ng g c component_name         // short commond
+    
+## Way to install Bootstap in project (localy not globly)
+
+     # npm install --save bootstrap@3
+     # Go to angular.json file and change the blow written code:
+        -> "styles" : [
+                "src/stylex.css";,
+                "node_modules/bootstrap/dist/css/bootstrap.css"  // add filepath from created file in node_module folder.
+            ]
