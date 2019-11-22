@@ -11,7 +11,7 @@ export class ServersComponent implements OnInit {
 
   createServerStaus = 'Server is not created';
 
-  newServerName: string = null;
+  newServerName: string = 'testServer';
 
   constructor() { }
 

@@ -26,7 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-######-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+####-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Created project
 
@@ -54,3 +54,43 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
                 "src/stylex.css";,
                 "node_modules/bootstrap/dist/css/bootstrap.css"  // add filepath from created file in node_module folder.
             ]
+
+## Property Binding
+
+    // ts file code
+    addServerBtn: boolean = false;
+    
+    // html file code
+    <button class="btn btn-primary" [disabled]="!addServerBtn">Add Server</button>
+    <p [innerHtml]="!addServerBtn" [innerHtml]="!addServerBtn?'Dissable':'Enable'"></p>
+
+## Event Binding
+
+    // ts file code
+    createServerStaus = 'Server is not created';
+    onCreateServer() {
+        this.createServerStaus = 'Server is created';
+    }
+    
+    // html file code
+    <button class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
+    <p [innerHtml]="addServerBtn"></p>	<br><br>
+    <p>{{createServerStaus}}</p>
+    
+## Two way binding
+
+    // Import FormModule and put it into imports array in 'app.module.ts' file like given below:
+    > import { FormsModule } from '@angular/forms';
+    > imports: [
+           BrowserModule,
+           FormsModule
+       ],
+       
+    // ts file code
+    newServerName: string = 'testServer';
+    
+    // Html code
+    <input type="text" class="form-control" [(ngModel)]="newServerName"/>
+    <p>{{newServerName}}</p> 
+    
+**Note :** Combine Property Binding and Event Binding are Two Way Binding  
