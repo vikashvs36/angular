@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
 
+  addServerBtn: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+    setInterval(()=> {
+      this.addServerBtn = true;
+    }, 2000);
   }
 
 }

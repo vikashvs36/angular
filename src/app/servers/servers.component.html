@@ -1,4 +1,7 @@
 
 <br>
+
+<button class="btn btn-primary" (click)="onClick()" [disabled]="!addServerBtn" [innerHtml]="!addServerBtn?'Dissable':'Enable'">Add Server</button>
+<p [innerHtml]="addServerBtn"></p>
 <app-server></app-server>
 <app-server></app-server>
