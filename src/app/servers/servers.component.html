@@ -1,7 +1,8 @@
 
 <br>
 
-<button class="btn btn-primary" (click)="onClick()" [disabled]="!addServerBtn" [innerHtml]="!addServerBtn?'Dissable':'Enable'">Add Server</button>
-<p [innerHtml]="addServerBtn"></p>
+<button class="btn btn-primary" (click)="onCreateServer()" [disabled]="!addServerBtn">Add Server</button>
+<br><br>
+<p>{{createServerStaus}}</p>
 <app-server></app-server>
 <app-server></app-server>

@@ -9,12 +9,18 @@ export class ServersComponent implements OnInit {
 
   addServerBtn: boolean = false;
 
+  createServerStaus = 'Server is not created';
+
   constructor() { }
 
   ngOnInit() {
     setInterval(()=> {
       this.addServerBtn = true;
     }, 2000);
+  }
+
+  onCreateServer() {
+    this.createServerStaus = 'Server is created';
   }
 
 }
