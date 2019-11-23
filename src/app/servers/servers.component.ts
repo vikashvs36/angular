@@ -7,26 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
 
-  addServerBtn: boolean = false;
+  newServerName: string = '';
 
-  createServerStaus = 'Server is not created';
-
-  newServerName: string = 'testServer';
+  isServerCreated: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
-    setInterval(()=> {
-      this.addServerBtn = true;
-    }, 2000);
   }
 
-  onCreateServer() {
-    this.createServerStaus = 'Server is created';
-  }
-
-  onUpdateServerName(event: Event) {
-    this.newServerName = (<HTMLInputElement>event.target).value;
+  onCreateServer(){
+    this.isServerCreated = true;
   }
 
 }

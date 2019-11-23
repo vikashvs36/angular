@@ -26,7 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-####-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+### -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Created project
 
@@ -94,3 +94,26 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     <p>{{newServerName}}</p> 
     
 **Note :** Combine Property Binding and Event Binding are Two Way Binding  
+
+## Directives
+Directives are instructions in the DOM. There may be many condition to print or show the statement on any event like 
+Suppose we want to show the value on button clicked whatever types by the user in input fields. Let see:
+
+    // ts file code
+    newServerName: string = '';
+    isServerCreated: boolean = false;
+    
+    onCreateServer(){
+        this.isServerCreated = true;
+    }
+    
+    // html code
+    <label>Server Name</label>
+    <input type="text" class="form-control" [(ngModel)]="newServerName"/>
+    <br>
+    
+    <button class="btn btn-primary" (click)="onCreateServer()" >Add Server</button>
+    
+    <p *ngIf="isServerCreated">Server name is : {{createServerStaus}}</p> 
+
+**Note :** Some example of the directives are like *ngIf, *ngFor etc. We can create custom directives as well.
