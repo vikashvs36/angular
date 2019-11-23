@@ -117,3 +117,10 @@ Suppose we want to show the value on button clicked whatever types by the user i
     <p *ngIf="isServerCreated">Server name is : {{createServerStaus}}</p> 
 
 **Note :** Some example of the directives are like *ngIf, *ngFor etc. We can create custom directives as well.
+
+# Way to use if else case in angular.
+
+    <p *ngIf="isServerCreated; else noServer">Server name is : {{newServerName}}</p>
+    <ng-template #noServer>
+      <p>No Server is created.</p>
+    </ng-template>

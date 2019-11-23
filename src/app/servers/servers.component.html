@@ -5,4 +5,7 @@
 
 <button class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
 <br><br>
-<p *ngIf="isServerCreated">Server name is : {{newServerName}}</p>
+<p *ngIf="isServerCreated; else noServer">Server name is : {{newServerName}}</p>
+<ng-template #noServer>
+  <p>No Server is created.</p>
+</ng-template>
