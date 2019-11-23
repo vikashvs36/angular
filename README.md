@@ -178,3 +178,69 @@ to backend on button click. So how can we do that let see:
     createServer(newServer: HTMLInputElement) {
         this.createdServers.push(newServer.value);
     }
+
+## Create our own Directive
+
+    // Create your own directive by using this command
+    > ng generate directive directive_name
+    > ng g d directive_name
+    
+    import {Directive, ElementRef, OnInit} from "@angular/core";
+    
+**1st Way :** (The basic way) 
+   
+    @Directive({
+      selector: '[basicAttributeDirective]'
+    })
+    export class AttributeDirective implements OnInit{
+    
+      constructor(private elementRef: ElementRef) { }
+    
+      ngOnInit() {
+        this.elementRef.nativeElement.style.backgroundColor = 'yellow';
+      }
+    }
+    
+    // after created a directive you can use it like below:
+    <h1 basicAttributeDirective> {{ title }} </h1>
+
+**2nd Way :** (the better way)
+
+    selector: '[appBetterAttribute]'
+    
+    ngOnInit() {
+        this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'blue');
+    }
+
+**HostListener event on Directives**
+
+    constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+    
+    // mouseenter event
+    @HostListener('mouseenter') mouseOver(eventData: Event) {
+        this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'green');
+    }
+    
+    // mouseleave event
+    @HostListener('mouseleave') mouseLeave() {
+        this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'pink');
+    }
+
+**HostBinding**
+
+    //HostBinding
+    @HostBinding('style.backgroundColor') background = 'pink';
+    
+    constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+    
+    @HostListener('mouseenter') mouseOver(eventData: Event) {
+        // this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'green');
+        this.background = 'green';
+    }
+    
+    @HostListener('mouseleave') mouseLeave() {
+        // this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'pink');
+        this.background = 'pink'
+    }
+
+**Note :** You can use either HostListener or HostBinding. Both are recomonded.
