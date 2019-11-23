@@ -147,9 +147,8 @@ Suppose we want to show the value on button clicked whatever types by the user i
     </div>
 
 ## Binding to custom properties.
-
-    The variables or objects are only available for the same component by default. So By using the custom properties we 
-    are able to access these variables on another component which is given below:
+The variables or objects are only available for the same component by default. So By using the custom properties we are 
+able to access these variables on another component which is given below:
     
     createdServers: string[] = ['Apache', 'Grassfish'];
     // The value of the createdServers are accessable in another component by using this   
@@ -164,4 +163,18 @@ Suppose we want to show the value on button clicked whatever types by the user i
     
     Note :- To avoid from this complexity, we generally use Service.
     
+## Local references in templates.
+Many of the time We have to submit the form or can say like get all the values from form or templates at the time of click
+or submit the button. 
+I am going with the simple example suppose there are a input type and we have to get the value of input type and send it
+to backend on button click. So how can we do that let see:
 
+    // Create local reference in template like
+    <input type="text" class="form-control" #serverName/>
+    <button class="btn btn-primary" (click)="createServer(serverName)">Add Server</button>
+    
+    createdServers: string[] = ['Apache', 'Grassfish'];
+    
+    createServer(newServer: HTMLInputElement) {
+        this.createdServers.push(newServer.value);
+    }

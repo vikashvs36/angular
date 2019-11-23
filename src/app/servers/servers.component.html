@@ -1,11 +1,12 @@
 
 <label>Server Name</label>
-<input type="text" class="form-control" [(ngModel)]="newServerName"/>
+<!--<input type="text" class="form-control" [(ngModel)]="newServerName"/>-->
+<input type="text" class="form-control" #serverName/>
 <br>
 
-<button class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
+<button class="btn btn-primary" (click)="onCreateServer(serverName)">Add Server</button>
 <br><br>
-<p *ngIf="isServerCreated; else noServer">Server name is : {{newServerName}}</p>
+<p *ngIf="isServerCreated; else noServer">Server name is created</p>
 <ng-template #noServer>
   <p>No Server is created.</p>
 </ng-template>

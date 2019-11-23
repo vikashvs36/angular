@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
 
-  newServerName: string = '';
-
   isServerCreated: boolean = false;
 
   createdServers: string[] = ['Apache', 'Grassfish'];
@@ -18,9 +16,9 @@ export class ServersComponent implements OnInit {
   ngOnInit() {
   }
 
-  onCreateServer(){
+  onCreateServer(newServer: HTMLInputElement){
     this.isServerCreated = true;
-    this.createdServers.push(this.newServerName);
+    this.createdServers.push(newServer.value);
   }
 
 }
