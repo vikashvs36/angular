@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-server',
@@ -9,7 +9,7 @@ export class ServerComponent implements OnInit {
 
   title = "This is local Server";
 
-  serverId: number = 101;
+  @Input() serverName: string;
 
   serverStatus: string = 'Offline';
 

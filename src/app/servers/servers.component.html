@@ -1,4 +1,3 @@
-<!--
 
 <label>Server Name</label>
 <input type="text" class="form-control" [(ngModel)]="newServerName"/>
@@ -10,8 +9,9 @@
 <ng-template #noServer>
   <p>No Server is created.</p>
 </ng-template>
--->
 
 
-<app-server></app-server>
-<app-server></app-server>
+<div *ngFor="let server of createdServers">
+  <app-server [serverName]="server"></app-server>
+</div>
+

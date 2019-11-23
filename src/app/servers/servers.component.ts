@@ -11,6 +11,8 @@ export class ServersComponent implements OnInit {
 
   isServerCreated: boolean = false;
 
+  createdServers: string[] = ['Apache', 'Grassfish'];
+
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +20,7 @@ export class ServersComponent implements OnInit {
 
   onCreateServer(){
     this.isServerCreated = true;
+    this.createdServers.push(this.newServerName);
   }
 
 }

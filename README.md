@@ -146,4 +146,22 @@ Suppose we want to show the value on button clicked whatever types by the user i
       <app-server></app-server>
     </div>
 
+## Binding to custom properties.
+
+    The variables or objects are only available for the same component by default. So By using the custom properties we 
+    are able to access these variables on another component which is given below:
+    
+    createdServers: string[] = ['Apache', 'Grassfish'];
+    // The value of the createdServers are accessable in another component by using this   
+    
+    <div *ngFor="let server of createdServers">
+      <app-server [serverName]="server"></app-server>
+    </div>
+    // Now all server are access one by one in serverName propertis which is mentioned in annother component.
+    
+    @Input() serverName: string;
+    // Make sure the binded custom properties are mention by @Input().
+    
+    Note :- To avoid from this complexity, we generally use Service.
+    
 
