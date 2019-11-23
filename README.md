@@ -129,3 +129,14 @@ Suppose we want to show the value on button clicked whatever types by the user i
 
     // Html Code
     <h3 [ngStyle]="{color:getServerColor()}"> The serverId : {{ serverId }} is {{ serverStatus }}</h3>
+
+## Add Class on runtime
+
+    // Css file
+    .online {
+      background-color: gainsboro;
+    }
+    
+    // Html file
+    <h3 [ngClass]="{online: serverStatus === 'Online'}"> The serverId : {{ serverId }} is {{ serverStatus }}</h3>
+
