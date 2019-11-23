@@ -140,3 +140,10 @@ Suppose we want to show the value on button clicked whatever types by the user i
     // Html file
     <h3 [ngClass]="{online: serverStatus === 'Online'}"> The serverId : {{ serverId }} is {{ serverStatus }}</h3>
 
+## Presenting the list or Array using *ngFor
+
+    <div *ngFor="let server of createdServers">
+      <app-server></app-server>
+    </div>
+
+
