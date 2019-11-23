@@ -244,3 +244,13 @@ to backend on button click. So how can we do that let see:
     }
 
 **Note :** You can use either HostListener or HostBinding. Both are recomonded.
+
+**Switch Case** 
+
+    <h2>Switch case</h2>
+    <div [ngSwitch]="value">
+        <p *ngSwitchCase="4"> Event </p>
+        <p *ngSwitchCase="9"> Odd </p>
+        <p *ngSwitchCase="17"> Prime </p>
+        <p *ngSwitchDefault> You can try with 4,9 and 17</p>
+    </div>

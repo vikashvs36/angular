@@ -11,6 +11,8 @@ export class ServersComponent implements OnInit {
 
   createdServers: string[] = ['Apache', 'Grassfish'];
 
+  value: number = 17;
+
   constructor() { }
 
   ngOnInit() {

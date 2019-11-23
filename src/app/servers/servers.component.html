@@ -21,3 +21,14 @@
   <p basicAttributeDirective>Basic Attribute Directive</p>
   <p appBetterAttribute>Better Attribute Directive (Mouse over on me)</p>
 </div>
+
+<div class="col-md-3">
+  <h2>Switch case</h2>
+  <div [ngSwitch]="value">
+    <p *ngSwitchCase="4"> Event </p>
+    <p *ngSwitchCase="9"> Odd </p>
+    <p *ngSwitchCase="17"> Prime </p>
+    <p *ngSwitchDefault> You can try with 4,9 and 17</p>
+  </div>
+</div>
+
