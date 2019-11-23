@@ -26,7 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-### -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+### -----------------------------------------------------------------------------------------------------------------------------------
 
 ## Created project
 
@@ -116,11 +116,16 @@ Suppose we want to show the value on button clicked whatever types by the user i
     
     <p *ngIf="isServerCreated">Server name is : {{createServerStaus}}</p> 
 
-**Note :** Some example of the directives are like *ngIf, *ngFor etc. We can create custom directives as well.
+**Note :** Some example of the directives are like *ngIf, *ngFor, ngStyle etc. We can create custom directives as well.
 
-# Way to use if else case in angular.
+## Way to use if else case in angular.
 
     <p *ngIf="isServerCreated; else noServer">Server name is : {{newServerName}}</p>
     <ng-template #noServer>
       <p>No Server is created.</p>
     </ng-template>
+
+## Add Css on runtime
+
+    // Html Code
+    <h3 [ngStyle]="{color:getServerColor()}"> The serverId : {{ serverId }} is {{ serverStatus }}</h3>
