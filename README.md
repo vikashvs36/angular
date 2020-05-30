@@ -26,8 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-### -----------------------------------------------------------------------------------------------------------------------------------
-
 ## Created project
 
     > ng new angular
@@ -254,3 +252,101 @@ to backend on button click. So how can we do that let see:
         <p *ngSwitchCase="17"> Prime </p>
         <p *ngSwitchDefault> You can try with 4,9 and 17</p>
     </div>
+
+## Reactive forms
+
+Reactive forms provide a model-driven approach. this approach is used to handling form inputs. This guide will show us to how to create and update a basic form control, progress to using multiple controls in a group, validate form values, and create dynamic forms where we can add or remove controls dynamicly or at run time.
+
+How to Implement Reactive forms, let's see step by step :
+
+**Step 1 : ReactiveFormsModule**
+
+Register the reactive forms module in our app. that means we need to use reactive forms. Import ReactiveFormsModule from '@angular/forms' in 'app.module.ts' file.
+
+      import { ReactiveFormsModule } from '@angular/forms';
+      @NgModule({
+        imports: [
+          ReactiveFormsModule
+        ],
+      })
+
+**Step 2 : FormGroup, FormBuilder, Validators**
+
+Import 'form' module in your component where Form need to validate and all.
+
+      export class LoginComponent implements OnInit {
+
+        loginForm: FormGroup;
+
+        validationMessage= {
+          'userName':{
+            'required': 'UserName is required',
+            'minlength': "userName Name Must be equals or more than 2 character or equals or less than 8 character.",
+            'maxlength': "userName Name Must be equals or more than 2 character or equals or less than 8 character."
+          },
+          'password': {
+            'required': 'password is required',
+            'minlength': "password Must be equals or more than 2 character or equals or less than 8 character.",
+            'maxlength': "password Must be equals or more than 2 character or equals or less than 8 character."
+          }
+        };
+
+        formErrors = {
+          'userName': '',
+          'password': ''
+        };
+
+        constructor(private fb: FormBuilder) { }
+
+        ngOnInit(): void {
+        this.loginForm =  this.fb.group({
+          userName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
+          password: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(8)]]
+        });
+
+        logKeyValuePair(group: FormGroup): void {
+          Object.keys(group.controls).forEach((key:string) => {
+            const absControl = group.get(key);
+            console.log('key : '+key+", value : "+absControl.value)
+            this.formErrors[key]='';
+            if(absControl && !absControl.valid) {
+              const message = this.validationMessage[key];
+              
+              for(const errorKey in absControl.errors ) {
+                if(errorKey) {
+                  this.formErrors[key] += message[errorKey] +' ';  
+                }
+              }
+            }
+          });
+        }
+
+        onSubmit(): void {
+          this.logKeyValuePair(this.loginForm);
+          console.log('Error :', this.formErrors);
+        }
+
+      }
+
+**Step 3 : Create Form**
+
+[formGroup]="loginForm" and formControlName="userName"  needs to mention to get all field and validate it.
+
+        <div class="container">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="col-md-4 col-md-offset-2">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input class="form-control" formControlName="userName" aria-describedby="emailHelp">
+                    <small class="form-text has-error" *ngIf="formErrors.userName">{{formErrors.userName}}</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input class="form-control" formControlName="password">
+                    <small class="form-text has-error" *ngIf="formErrors.password">{{formErrors.password}}</small>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </div>
+            </form>
+        </div>
